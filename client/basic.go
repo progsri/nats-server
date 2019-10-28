@@ -9,7 +9,12 @@ import (
 
 func main() {
 	// Connect to a server
-	nc, _ := nats.Connect(nats.DefaultURL)
+	nc, status := nats.Connect(nats.DefaultURL)
+
+	fmt.Println(status)
+	if status != nil {
+		fmt.Println("Unable to connect")
+	}
 
 	// Simple Publisher
 	nc.Publish("foo", []byte("Hello World"))
