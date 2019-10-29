@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"time"
 
 	nats "github.com/nats-io/nats.go"
@@ -13,7 +14,8 @@ func main() {
 
 	fmt.Println(status)
 	if status != nil {
-		fmt.Println("Unable to connect")
+		fmt.Println("Unable to connect to nats server")
+		os.Exit(0)
 	}
 
 	// Simple Publisher
