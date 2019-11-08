@@ -96,6 +96,8 @@ func main() {
 		os.Exit(0)
 	}
 
+	opts.Debug = true
+	opts.Trace = true
 	// Create the server with appropriate options.
 	s, err := server.NewServer(opts)
 	if err != nil {
@@ -105,6 +107,7 @@ func main() {
 	// Configure the logger based on the flags
 	s.ConfigureLogger()
 
+	fmt.Println("About to start nats server")
 	// Start things up. Block here until done.
 	if err := server.Run(s); err != nil {
 		server.PrintAndDie(err.Error())
